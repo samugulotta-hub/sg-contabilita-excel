@@ -33,6 +33,17 @@ def build_workbook(output_path: Path) -> None:
     sheet.column_dimensions["F"].width = 30
 
     sheet.append([date.today().isoformat(), "", "", "", "", ""])
+# =========================
+# SANITY CHECK OBBLIGATORIO
+# =========================
+sheetnames = wb.sheetnames
+print("Workbook sheets count:", len(sheetnames))
+print("Workbook sheets:", sheetnames)
+
+if len(sheetnames) < 10:
+    raise Exception(
+        f"ERRORE GRAVE: creati solo {len(sheetnames)} fogli. Devono essere almeno 10."
+    )
 
     workbook.save(output_path)
 

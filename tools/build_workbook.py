@@ -33,6 +33,13 @@ def build_workbook(path):
         ws.freeze_panes = "A3"
         ws.append([date.today().isoformat(), "", "", "", "", ""])
 
+sheetnames = wb.sheetnames
+print("SHEETS_COUNT:", len(sheetnames))
+print("SHEETS:", sheetnames)
+
+if len(sheetnames) < 10:
+    raise Exception(f"Workbook incorrect: only {len(sheetnames)} sheets")
+
     wb.save(path)
 
 if __name__ == "__main__":
